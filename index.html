@@ -1,14 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Visual-to-Engineering | Da imagem à fabricação</title>
-<style>body{font-family:sans-serif;max-width:800px;margin:0 auto;padding:24px;line-height:1.6;color:#111}h1{font-size:36px} .box{background:#f1f5f9;padding:20px;border-radius:12px} .btn{background:#111;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;display:inline-block} .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px} .card{border:1px solid #ddd;padding:16px;border-radius:12px}</style></head>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:#0f172a;background:#fff;line-height:1.6}
+header{max-width:1100px;margin:0 auto;padding:20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:20px} .logo span{color:#2563eb}
+.btn{background:#2563eb;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block}
+.btn2{border:1px solid #ddd;padding:12px 22px;border-radius:999px;text-decoration:none;color:#0f172a;font-weight:700;display:inline-block}
+.hero{max-width:1100px;margin:0 auto;padding:40px 20px 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.hero h1{font-size:52px;line-height:1.05;margin:0} .hero h1 span{color:#2563eb}
+.hero p{font-size:18px;color:#475569}
+.badge{background:#eff6ff;color:#2563eb;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;display:inline-block}
+.card-demo{background:#0f172a;color:#fff;border-radius:20px;padding:24px}
+.card-demo img{width:100%;border-radius:12px;opacity:.9}
+.kpi{display:flex;gap:16px;margin-top:20px} .kpi div{background:#f8fafc;padding:14px;border-radius:12px;flex:1;text-align:center} .kpi b{font-size:22px;display:block}
+section{max-width:1100px;margin:0 auto;padding:30px 20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.card{border:1px solid #e2e8f0;padding:20px;border-radius:16px}
+.card b{font-size:18px}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+.step{background:#f8fafc;padding:20px;border-radius:16px} .step span{background:#2563eb;color:#fff;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800}
+.example{background:#fff7ed;border:1px solid #fed7aa;padding:24px;border-radius:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+footer{background:#0f172a;color:#fff;padding:30px 20px;text-align:center;margin-top:20px}
+@media(max-width:700px){.hero,.grid,.steps,.example{grid-template-columns:1fr}.hero h1{font-size:36px}}
+</style>
+</head>
 <body>
-<h1>Visual-to-Engineering</h1>
-<h2>Da imagem à fabricação</h2>
-<p><b>O problema:</b> Serralherias e pequenas indústrias recebem foto no WhatsApp e perdem dias para transformar em desenho técnico, orçamento e fabricação.</p>
-<div class="box"><b>Como funciona:</b><br>1. Envie a foto, esboço ou desenho<br>2. IA decompõe em componentes<br>3. Você valida 1 medida real<br>4. Receba desenho com cotas, lista de materiais e plano de fabricação em PDF</div>
-<h3>O que entregamos</h3>
-<div class="grid"><div class="card"><b>📐 Desenho com cotas</b><br>Pronto para fabricar</div><div class="card"><b>📋 Lista de Materiais</b><br>Custo e quantidade</div><div class="card"><b>🏭 Plano de Fabricação</b><br>Passo a passo em PDF</div><div class="card"><b>⚡ 10x mais rápido</b><br>De dias para minutos</div></div>
-<p><b>Trilha:</b> Logística & Automação - Hack Brasil 2026</p>
-<p><a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">Ver código no GitHub</a></p>
-</body></html>
+<header><div class="logo">VISUAL<span>→</span>ENGINEERING</div><a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">Ver no GitHub</a></header>
+
+<div class="hero">
+<div>
+<span class="badge">HACK BRASIL 2026 • LOGÍSTICA & AUTOMAÇÃO</span>
+<h1>Da imagem<br>à <span>fabricação.</span></h1>
+<p>Plataforma de engenharia assistida por IA que transforma <b>foto, esboço ou desenho técnico</b> em projeto estruturado para fabricação industrial.</p>
+<p><a class="btn" href="#como">Ver como funciona</a> <a class="btn2" href="#exemplo">Ver exemplo</a></p>
+<div class="kpi"><div><b>10x</b>mais rápido</div><div><b>-70%</b>retrabalho</div><div><b>3 min</b>para orçamento</div></div>
+</div>
+<div class="card-demo">
+<p style="margin:0 0 10px"><b>📸 Foto no WhatsApp → 📐 Projeto pronto</b></p>
+<div style="background:#1e293b;padding:20px;border-radius:12px;text-align:center;font-size:40px">🏗️ → 📐 → 🏭</div>
+<p style="color:#cbd5e1;font-size:14px">Você envia a foto. A IA decompõe, você valida 1 medida real. Pronto: desenho, materiais e plano de fabricação.</p>
+</div>
+</div>
+
+<section>
+<h2>O problema que resolvemos</h2>
+<p>Serralherias e pequenas indústrias recebem foto no WhatsApp e perdem <b>dias</b> para transformar em desenho técnico, orçamento e fabricação. Muito erro, muito retrabalho, cliente esperando.</p>
+<div class="grid">
+<div class="card"><b>😤 Para o cliente</b><br>Espera dias por um orçamento simples. Sem previsibilidade.</div>
+<div class="card"><b>😩 Para a oficina</b><br>Desenha tudo na mão, erra medida, perde material e dinheiro.</div>
+<div class="card"><b>💸 Para o negócio</b><br>Sem padronização, não consegue escalar nem vender mais.</div>
+</div>
+</section>
+
+<section id="como">
+<h2>Como funciona</h2>
+<div class="steps">
+<div class="step"><span>1</span><br><b>Envie a foto</b><br>Foto, esboço ou desenho técnico pelo celular.</div>
+<div class="step"><span>2</span><br><b>IA decompõe</b><br>Identifica componentes, tubos, chapas, conexões e dimensões.</div>
+<div class="step"><span>3</span><br><b>Valide 1 medida</b><br>Você confirma 1 medida real e a IA escala tudo proporcionalmente.</div>
+<div class="step"><span>4</span><br><b>Receba o projeto</b><br>Desenho com cotas + lista de materiais + plano de fabricação em PDF.</div>
+</div>
+</section>
+
+<section id="exemplo">
+<h2>Exemplo real</h2>
+<div class="example">
+<div><b>Entrada: Foto de um portão</b><br><br>📸 Foto torta no WhatsApp<br>📏 Medida real: 2,10m de largura<br>🎯 Material: Metalon 30x30</div>
+<div><b>Saída: Projeto completo</b><br><br>✅ Desenho com cotas em PDF<br>✅ Lista: 6 barras, 4 dobradiças, 1 fechadura<br>✅ Custo estimado: R$ 850<br>✅ Tempo de fabricação: 4h</div>
+</div>
+</section>
+
+<section>
+<h2>O que entregamos</h2>
+<div class="grid">
+<div class="card"><b>📐 Desenho com cotas</b><br>Pronto para fabricar, sem precisar redesenhar.</div>
+<div class="card"><b>📋 Lista de Materiais (BOM)</b><br>Quantidade, custo e fornecedor sugerido.</div>
+<div class="card"><b>🏭 Plano de Fabricação</b><br>Passo a passo: corte, solda, montagem e acabamento.</div>
+</div>
+<p style="text-align:center;margin-top:24px"><a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">Quero ver o código do projeto</a></p>
+</section>
+
+<footer>
+<b>Visual-to-Engineering</b><br>Projeto desenvolvido para o Hack Brasil 2026 - Trilha Logística & Automação<br>Equipe: Eduardo Kialanda
+</footer>
+</body>
+</html>
