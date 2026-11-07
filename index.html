@@ -1,90 +1,737 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Visual-to-Engineering: plataforma de engenharia assistida por IA que transforma imagens em projetos técnicos, com dimensões editáveis, decomposição de componentes e orientação de fabricação.">
 <title>Visual-to-Engineering | Da imagem à fabricação</title>
+
 <style>
-*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:#0f172a;background:#f1f5f9;line-height:1.6}
-header{max-width:1100px;margin:0 auto;padding:20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800;font-size:20px} .logo span{color:#2563eb}
-.btn{background:#2563eb;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block}
-.btn2{background:#fff;border:1px solid #ddd;padding:12px 22px;border-radius:999px;text-decoration:none;color:#0f172a;font-weight:700;display:inline-block}
-.hero{background:#0f172a;color:#fff;padding:50px 20px}
-.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
-.hero h1{font-size:52px;line-height:1.05;margin:10px 0} .hero h1 span{color:#60a5fa}
-.hero p{font-size:18px;color:#cbd5e1}
-.badge{background:#1e3a8a;color:#bfdbfe;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;display:inline-block}
-.card-demo{background:#fff;color:#0f172a;border-radius:20px;padding:24px}
-.kpi{display:flex;gap:12px;margin-top:20px} .kpi div{background:rgba(255,255,255,.1);padding:14px;border-radius:12px;flex:1;text-align:center} .kpi b{font-size:22px;display:block;color:#fff}
-section{max-width:1100px;margin:0 auto;padding:30px 20px}
-.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.card{background:#fff;border:1px solid #e2e8f0;padding:20px;border-radius:16px}
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Inter,system-ui,Arial,sans-serif;
+color:#0f172a;
+background:#f1f5f9;
+line-height:1.6
+}
+
+header{
+max-width:1100px;
+margin:0 auto;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px
+}
+
+.logo{font-weight:800;font-size:20px}
+.logo span{color:#2563eb}
+
+.btn{
+background:#2563eb;
+color:#fff;
+padding:12px 22px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+display:inline-block
+}
+
+.btn2{
+background:#fff;
+border:1px solid #ddd;
+padding:12px 22px;
+border-radius:999px;
+text-decoration:none;
+color:#0f172a;
+font-weight:700;
+display:inline-block
+}
+
+.hero{
+background:#0f172a;
+color:#fff;
+padding:50px 20px
+}
+
+.hero-inner{
+max-width:1100px;
+margin:0 auto;
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+align-items:center
+}
+
+.hero h1{
+font-size:52px;
+line-height:1.05;
+margin:10px 0
+}
+
+.hero h1 span{color:#60a5fa}
+
+.hero p{
+font-size:18px;
+color:#cbd5e1
+}
+
+.badge{
+background:#1e3a8a;
+color:#bfdbfe;
+padding:6px 12px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+display:inline-block
+}
+
+.card-demo{
+background:#fff;
+color:#0f172a;
+border-radius:20px;
+padding:24px
+}
+
+.demo-visual{
+background:#0f172a;
+color:#fff;
+padding:25px;
+border-radius:12px;
+text-align:center;
+font-size:38px
+}
+
+.demo-label{
+display:inline-block;
+background:#dbeafe;
+color:#1d4ed8;
+padding:5px 10px;
+border-radius:8px;
+font-size:12px;
+font-weight:700;
+margin-bottom:12px
+}
+
+section{
+max-width:1100px;
+margin:0 auto;
+padding:35px 20px
+}
+
+section h2{font-size:28px;margin:0 0 12px}
+.section-intro{color:#475569;margin-bottom:22px}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:16px
+}
+
+.card{
+background:#fff;
+border:1px solid #e2e8f0;
+padding:20px;
+border-radius:16px
+}
+
 .card b{font-size:18px}
-.steps{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
-.step{background:#fff;padding:20px;border-radius:16px} .step span{background:#2563eb;color:#fff;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800}
-.example{background:#fff7ed;border:1px solid #fed7aa;padding:24px;border-radius:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-footer{background:#0f172a;color:#fff;padding:30px 20px;text-align:center;margin-top:20px}
-@media(max-width:700px){.hero-inner,.grid,.steps,.example{grid-template-columns:1fr}.hero h1{font-size:36px}}
+
+.steps{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 1fr;
+gap:16px
+}
+
+.step{
+background:#fff;
+padding:20px;
+border-radius:16px;
+border:1px solid #e2e8f0
+}
+
+.step span{
+background:#2563eb;
+color:#fff;
+width:32px;
+height:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-weight:800
+}
+
+.modes{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px
+}
+
+.mode{
+background:#fff;
+padding:24px;
+border:1px solid #e2e8f0;
+border-radius:16px
+}
+
+.mode h3{margin-top:0}
+
+.example{
+background:#fff7ed;
+border:1px solid #fed7aa;
+padding:24px;
+border-radius:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px
+}
+
+.example-note{
+font-size:13px;
+color:#9a3412;
+margin-top:18px
+}
+
+.dimension-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:15px
+}
+
+.dimension{
+background:#fff;
+border:1px solid #e2e8f0;
+padding:12px;
+border-radius:10px
+}
+
+.dimension strong{display:block;color:#1d4ed8}
+
+.status-list{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:12px
+}
+
+.status{
+background:#fff;
+padding:15px;
+border-radius:12px;
+border:1px solid #e2e8f0
+}
+
+.status b{display:block;margin-bottom:4px}
+
+.warning{
+background:#eff6ff;
+border-left:4px solid #2563eb;
+padding:18px;
+border-radius:10px;
+color:#1e3a8a;
+margin-top:20px
+}
+
+.cta{text-align:center;margin-top:25px}
+
+footer{
+background:#0f172a;
+color:#fff;
+padding:30px 20px;
+text-align:center;
+margin-top:20px
+}
+
+footer p{color:#cbd5e1;font-size:14px}
+
+@media(max-width:700px){
+.hero-inner,.grid,.steps,.example,.modes,.status-list{
+grid-template-columns:1fr
+}
+.hero h1{font-size:36px}
+.dimension-list{grid-template-columns:1fr 1fr}
+header{flex-wrap:wrap}
+header .btn{padding:10px 15px}
+section h2{font-size:24px}
+}
 </style>
 </head>
-<body>
-<header><div class="logo">VISUAL<span>→</span>ENGINEERING</div><a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">Ver no GitHub</a></header>
 
-<div class="hero"><div class="hero-inner">
+<body>
+
+<header>
+<div class="logo">VISUAL<span>→</span>ENGINEERING</div>
+<a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">
+Ver no GitHub
+</a>
+</header>
+
+<!-- APRESENTAÇÃO -->
+
+<div class="hero">
+<div class="hero-inner">
+
 <div>
 <span class="badge">HACK BRASIL 2026 • LOGÍSTICA & AUTOMAÇÃO</span>
+
 <h1>Da imagem<br>à <span>fabricação.</span></h1>
-<p>Plataforma de engenharia assistida por IA que transforma <b style="color:#fff">foto, esboço ou desenho técnico</b> em projeto estruturado, pronto para fabricar, montar e instalar.</p>
-<p><a class="btn" href="#como">Ver como funciona</a> <a class="btn2" href="#exemplo">Ver exemplo</a></p>
-<div class="kpi"><div><b>10x</b>mais rápido</div><div><b>-70%</b>retrabalho</div><div><b>3 min</b>para orçamento</div></div>
+
+<p>
+Uma plataforma de engenharia assistida por IA que transforma
+<b style="color:#fff">fotografias, esboços e desenhos técnicos</b>
+em projetos estruturados, com dimensões editáveis,
+identificação de componentes e orientação de fabricação e montagem.
+</p>
+
+<p>
+<a class="btn" href="#como">Conheça o funcionamento</a>
+<a class="btn2" href="#exemplo">Ver exemplo</a>
+</p>
 </div>
+
 <div class="card-demo">
-<p style="margin:0 0 10px"><b>📸 Foto no WhatsApp → 📐 Projeto pronto</b></p>
-<div style="background:#0f172a;color:#fff;padding:20px;border-radius:12px;text-align:center;font-size:40px">🏗️ → 📐 → 🏭</div>
-<p style="color:#475569;font-size:14px">Você envia a foto. A IA decompõe, você valida 1 medida real. Pronto: desenho, materiais e plano de fabricação.</p>
+<span class="demo-label">CONCEITO DA PLATAFORMA</span>
+
+<p style="margin:0 0 10px">
+<b>Da referência visual ao projeto técnico</b>
+</p>
+
+<div class="demo-visual">
+📸 → 📐 → 🧩 → 🏭
 </div>
-</div></div>
+
+<p style="color:#475569;font-size:14px">
+O usuário envia uma imagem, define ou corrige dimensões,
+analisa os componentes e recebe orientação para fabricar
+e montar o objeto específico.
+</p>
+</div>
+
+</div>
+</div>
+
+<!-- PROBLEMA -->
 
 <section>
 <h2>O problema que resolvemos</h2>
-<p>Empresas que fabricam, montam, instalam ou fazem manutenção recebem uma <b>foto no WhatsApp</b> e perdem dias para transformar aquilo em desenho técnico, orçamento e fabricação. O processo é manual, lento e cheio de erros.</p>
+
+<p class="section-intro">
+Transformar uma referência visual em um projeto de fabricação
+exige interpretação, dimensionamento, identificação de peças
+e planejamento técnico.
+</p>
+
+<p>
+Empresas e profissionais frequentemente recebem apenas uma
+<b>fotografia, um esboço ou uma referência visual</b> de um produto.
+Transformar esse material em um projeto técnico pode exigir
+horas ou dias de trabalho manual, além de gerar erros de
+dimensões, materiais e custos.
+</p>
+
 <div class="grid">
-<div class="card"><b>🏭 Indústrias e fábricas</b><br>Precisam transformar pedidos urgentes em produção sem parar a linha para redesenhar tudo.</div>
-<div class="card"><b>🏗️ Construtoras e montadoras</b><br>Recebem fotos de obra e precisam de estrutura metálica, suporte e instalação com urgência.</div>
-<div class="card"><b>🔧 Serralherias, oficinas e manutenção</b><br>Portões, escadas, racks, estruturas e peças sob medida, sem engenheiro dedicado.</div>
+
+<div class="card">
+<b>🏭 Indústrias e fábricas</b>
+<br>
+Precisam transformar referências de produtos e equipamentos
+em projetos estruturados para produção.
 </div>
-<p style="margin-top:16px;color:#475569"><b>Para quem é:</b> Indústrias, construtoras, empresas de logística, serralherias, oficinas, equipes de manutenção e qualquer operação que precisa fabricar a partir de uma imagem.</p>
+
+<div class="card">
+<b>🏗️ Construtoras e montadoras</b>
+<br>
+Precisam interpretar estruturas, suportes e componentes
+para fabricação e instalação.
+</div>
+
+<div class="card">
+<b>🔧 Serralherias e manutenção</b>
+<br>
+Trabalham com portões, escadas, racks, estruturas metálicas
+e peças sob medida.
+</div>
+
+</div>
+
+<p style="margin-top:16px;color:#475569">
+<b>Para quem é:</b> indústrias, empresas de logística,
+construtoras, serralherias, oficinas e equipes de manutenção.
+</p>
 </section>
+
+<!-- FUNCIONAMENTO -->
 
 <section id="como">
 <h2>Como funciona</h2>
+
+<p class="section-intro">
+Da entrada da imagem até a orientação de fabricação e montagem
+do mesmo objeto.
+</p>
+
 <div class="steps">
-<div class="step"><span>1</span><br><b>Envie a foto</b><br>Foto, esboço ou desenho técnico pelo celular.</div>
-<div class="step"><span>2</span><br><b>IA decompõe</b><br>Identifica componentes, tubos, chapas, conexões e dimensões.</div>
-<div class="step"><span>3</span><br><b>Valide 1 medida</b><br>Você confirma 1 medida real e a IA escala tudo proporcionalmente.</div>
-<div class="step"><span>4</span><br><b>Receba o projeto</b><br>Desenho com cotas + lista de materiais + plano de fabricação em PDF.</div>
+
+<div class="step">
+<span>1</span>
+<br>
+<b>Envie a referência</b>
+<br>
+O usuário envia uma fotografia, esboço ou desenho técnico
+pelo celular ou computador.
+</div>
+
+<div class="step">
+<span>2</span>
+<br>
+<b>Interpretação e decomposição</b>
+<br>
+A IA analisa a estrutura, identifica componentes e organiza
+uma representação digital desmontada.
+</div>
+
+<div class="step">
+<span>3</span>
+<br>
+<b>Defina as dimensões</b>
+<br>
+O usuário informa, edita e valida as medidas gerais
+e as dimensões individuais das peças.
+</div>
+
+<div class="step">
+<span>4</span>
+<br>
+<b>Projeto e execução</b>
+<br>
+A plataforma organiza o desenho técnico, os materiais
+e orienta visualmente a fabricação e a montagem.
+</div>
+
 </div>
 </section>
+
+<!-- MODOS -->
+
+<section id="modos">
+<h2>Dois modos de operação</h2>
+
+<p class="section-intro">
+O usuário escolhe quanto deseja participar da construção do projeto.
+Os dois modos utilizam o mesmo núcleo de engenharia.
+</p>
+
+<div class="modes">
+
+<div class="mode">
+<h3>🤖 Modo Automático</h3>
+
+<p>
+A plataforma interpreta a imagem e organiza automaticamente
+as informações que consegue identificar.
+</p>
+
+<ul>
+<li>Analisa a geometria do objeto.</li>
+<li>Identifica componentes e suas relações.</li>
+<li>Obtém dimensões quando existem dados suficientes.</li>
+<li>Solicita ao usuário as medidas essenciais que faltarem.</li>
+<li>Atualiza o projeto conforme as correções informadas.</li>
+</ul>
+</div>
+
+<div class="mode">
+<h3>🧑‍🔧 Modo Assistido</h3>
+
+<p>
+O usuário participa diretamente da construção e validação
+do projeto, com apoio da IA.
+</p>
+
+<ul>
+<li>Informa as dimensões conhecidas.</li>
+<li>Define medidas individuais de cada peça.</li>
+<li>Escolhe ou corrige materiais e espessuras.</li>
+<li>Responde às perguntas da plataforma.</li>
+<li>Revisa os componentes e as especificações técnicas.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- DIMENSÕES -->
+
+<section id="dimensoes">
+<h2>O usuário tem controle sobre as dimensões</h2>
+
+<p class="section-intro">
+A plataforma não deve depender exclusivamente das medidas
+interpretadas pela IA. O usuário poderá definir e modificar
+as dimensões do projeto.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<b>📏 Dimensões gerais</b>
+<br>
+Altura, largura, profundidade e outras dimensões
+principais do objeto.
+</div>
+
+<div class="card">
+<b>🧩 Dimensões individuais</b>
+<br>
+Comprimento, largura, espessura e outras medidas
+específicas de cada componente.
+</div>
+
+<div class="card">
+<b>🔄 Atualização do projeto</b>
+<br>
+As alterações deverão refletir no desenho técnico,
+na representação dos componentes e nos cálculos relacionados.
+</div>
+
+</div>
+
+<div class="dimension-list">
+
+<div class="dimension">
+<strong>Altura</strong>
+2.400 mm
+</div>
+
+<div class="dimension">
+<strong>Largura</strong>
+1.800 mm
+</div>
+
+<div class="dimension">
+<strong>Profundidade</strong>
+600 mm
+</div>
+
+<div class="dimension">
+<strong>Espessura</strong>
+2 mm
+</div>
+
+</div>
+
+<p style="font-size:13px;color:#64748b">
+Dimensões acima são apenas exemplos ilustrativos de campos
+que o usuário poderá preencher.
+</p>
+</section>
+
+<!-- EXEMPLO -->
 
 <section id="exemplo">
-<h2>Exemplo real</h2>
+<h2>Exemplo ilustrativo — Rack industrial</h2>
+
+<p class="section-intro">
+Veja como a plataforma pretende transformar uma referência
+visual em um projeto estruturado.
+</p>
+
 <div class="example">
-<div><b>Entrada: Foto de um rack industrial</b><br><br>📸 Foto da estrutura no galpão<br>📏 Medida real: 2,40m de altura<br>🎯 Material: Metalon 40x40 e chapa</div>
-<div><b>Saída: Projeto completo</b><br><br>✅ Desenho com cotas em PDF<br>✅ Lista: 12 barras, 8 chapas, parafusos<br>✅ Custo estimado: R$ 2.350<br>✅ Tempo de fabricação: 1 dia</div>
+
+<div>
+<b>📥 Entrada: referência visual</b>
+<br><br>
+
+📸 Fotografia de um rack industrial
+<br>
+📏 Dimensões gerais informadas pelo usuário
+<br>
+🧩 Identificação dos componentes
+<br>
+🛠️ Definição dos materiais e espessuras
+
+</div>
+
+<div>
+<b>📤 Saída: projeto estruturado</b>
+<br><br>
+
+📐 Desenho técnico com cotas
+<br>
+🧩 Representação desmontada e identificada
+<br>
+📋 Lista de materiais e quantidades
+<br>
+🏭 Etapas de fabricação
+<br>
+🔩 Orientação visual de montagem
+
+</div>
+
+<p class="example-note" style="grid-column:1/-1">
+<strong>Importante:</strong> este rack é um exemplo ilustrativo
+para demonstrar o conceito da plataforma. As dimensões,
+materiais, quantidades, custos e tempos de fabricação
+precisam ser definidos e validados para cada projeto real.
+</p>
+
 </div>
 </section>
+
+<!-- ENTREGÁVEIS -->
 
 <section>
-<h2>O que entregamos</h2>
+<h2>O que a plataforma pretende entregar</h2>
+
 <div class="grid">
-<div class="card"><b>📐 Desenho com cotas</b><br>Pronto para fabricar, montar e instalar, sem precisar redesenhar.</div>
-<div class="card"><b>📋 Lista de Materiais (BOM)</b><br>Quantidade, custo e fornecedor sugerido.</div>
-<div class="card"><b>🏭 Plano de Fabricação</b><br>Passo a passo: corte, solda, montagem e acabamento.</div>
+
+<div class="card">
+<b>📐 Projeto técnico</b>
+<br>
+Desenhos com cotas, dimensões e especificações
+organizadas para revisão técnica.
 </div>
-<p style="text-align:center;margin-top:24px"><a class="btn" href="https://github.com/eduardokialanda11-boop/visual-to-engineering">Quero ver o código do projeto</a></p>
+
+<div class="card">
+<b>🧩 Decomposição de componentes</b>
+<br>
+Representação digital desmontada, com identificação
+e informações de cada peça.
+</div>
+
+<div class="card">
+<b>📋 Lista de materiais</b>
+<br>
+Quantidades, especificações, materiais e informações
+necessárias para planejamento.
+</div>
+
+<div class="card">
+<b>🏭 Plano de fabricação</b>
+<br>
+Sequência de operações, como corte, preparação,
+soldagem e acabamento, conforme o projeto.
+</div>
+
+<div class="card">
+<b>🔩 Guia de montagem</b>
+<br>
+Orientação visual e sequencial para montar
+o objeto analisado.
+</div>
+
+<div class="card">
+<b>📄 Documentação técnica</b>
+<br>
+Organização dos resultados para consulta,
+revisão e futura exportação em formatos técnicos.
+</div>
+
+</div>
 </section>
 
-<footer><b>Visual-to-Engineering</b><br>Projeto desenvolvido para o Hack Brasil 2026 - Trilha Logística & Automação<br>Equipe: Eduardo Kialanda</footer>
+<!-- CONFIABILIDADE -->
+
+<section id="confiabilidade">
+<h2>Confiabilidade e validação técnica</h2>
+
+<p class="section-intro">
+Cada informação deverá apresentar sua origem e seu nível
+de confirmação. A IA não deverá transformar suposições
+em especificações definitivas.
+</p>
+
+<div class="status-list">
+
+<div class="status">
+<b>👁️ Observada</b>
+Identificada diretamente na imagem ou desenho.
+</div>
+
+<div class="status">
+<b>🧮 Calculada</b>
+Obtida por cálculos com dados disponíveis.
+</div>
+
+<div class="status">
+<b>≈ Estimada</b>
+Valor aproximado que precisa de confirmação.
+</div>
+
+<div class="status">
+<b>✍️ Informada</b>
+Fornecida manualmente pelo usuário.
+</div>
+
+<div class="status">
+<b>⏳ Pendente</b>
+Informação ainda necessária ou desconhecida.
+</div>
+
+<div class="status">
+<b>✓ Validada</b>
+Conferida e aprovada conforme os critérios do projeto.
+</div>
+
+</div>
+
+<div class="warning">
+<b>Segurança em primeiro lugar.</b>
+<br>
+Uma imagem isolada não permite determinar todas as propriedades
+de um objeto, como materiais, espessuras, geometrias ocultas
+ou resistência estrutural. Projetos críticos exigem cálculos,
+normas aplicáveis e validação de profissional habilitado
+antes da fabricação.
+</div>
+</section>
+
+<!-- ESTÁGIO -->
+
+<section>
+<h2>Estágio atual do projeto</h2>
+
+<div class="card">
+<p>
+A versão atual do repositório contém uma página estática
+de apresentação do Visual-to-Engineering, desenvolvida
+com HTML, CSS e JavaScript.
+</p>
+
+<p>
+A visão apresentada nesta página representa o objetivo
+e as funcionalidades planejadas para a plataforma.
+O processamento por IA, a modelagem técnica, a geração
+de arquivos CAD e a orientação automatizada de fabricação
+ainda dependem de implementação e validação.
+</p>
+</div>
+
+<div class="cta">
+<a class="btn"
+href="https://github.com/eduardokialanda11-boop/visual-to-engineering">
+Conheça o projeto no GitHub
+</a>
+</div>
+</section>
+
+<footer>
+<b>Visual-to-Engineering</b>
+<br>
+Da imagem à fabricação.
+<p>
+Projeto desenvolvido para o Hack Brasil 2026
+<br>
+Trilha Logística & Automação
+<br>
+Equipe: Eduardo Kialanda
+</p>
+</footer>
+
 </body>
 </html>
